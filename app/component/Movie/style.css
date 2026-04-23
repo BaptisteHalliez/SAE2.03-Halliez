@@ -1,48 +1,58 @@
 .movie {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .movie__title {
-    font-size: 2rem;
-    font-weight: 600;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .movie__movies {
-
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 .movie__empty {
-        text-align: center;
-    font-size: 1.25rem;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .movie__item {
-
 }
 
 .card {
-
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .card__img-container {
-
 }
 
 .card__img {
-
+  width: 100%;
+  aspect-ratio: 3 / 4;
 }
 
 .card__infos {
-
 }
 
 .card__title {
-
+  font-size: 1.5rem;
 }
 
-@media (min-width: 27.5rem){
+@media (min-width: 31rem) {
+  .movie__movies {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (min-width: 60rem) {
+  .movie__movies {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
