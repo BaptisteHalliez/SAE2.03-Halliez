@@ -1,0 +1,71 @@
+<div class="addmovie">
+  <h4 class="addmovie__title">Ajouter un film</h4>
+  <form class="addmovie__form">
+    <input
+      required
+      type="text"
+      name="name"
+      placeholder="Saisir le nom du film"
+    />
+    <input
+      required
+      type="text"
+      name="director"
+      placeholder="Saisir le nom du réalisateur"
+      pattern="[^0-9]*"
+      title="Numbers are not allowed"
+    />
+    <input
+      required
+      type="number"
+      name="year"
+      placeholder="Saisir l'année de sortie du film"
+      min="1895"
+      max="2026"
+    />
+    <input
+      required
+      type="number"
+      name="length"
+      placeholder="Saisir la durée en minute"
+    />
+    <input
+      required
+      type="text"
+      name="description"
+      placeholder="Saisir le synopsis"
+    />
+    <select required name="category" id="category">
+      <option value="action">Action</option>
+      <option value="comedie">Comédie</option>
+      <option value="drame">Drame</option>
+      <option value="scifi">Science-fiction</option>
+      <option value="animation">Animation</option>
+      <option value="thriller">Thriller</option>
+      <option value="horreur">Horreur</option>
+      <option value="aventure">Aventure</option>
+      <option value="fantaisie">Fantaisie</option>
+      <option value="documentaire">Documentaire</option>
+    </select>
+    <input
+      required
+      type="text"
+      name="image"
+      placeholder="Saisir le nom de l'affiche"
+    />
+    <input
+      required
+      type="text"
+      name="trailer"
+      placeholder="Saisir l'URL du trailer"
+    />
+    <select required name="min_age" id="min_age">
+      <option value="zero">Tous public</option>
+      <option value="dix">10</option>
+      <option value="douze">12</option>
+      <option value="seize">16</option>
+      <option value="dixhuit">18</option>
+    </select>
+    <input onclick="{{handler}}" type="button" value="Add" name="todo" />
+  </form>
+</div>

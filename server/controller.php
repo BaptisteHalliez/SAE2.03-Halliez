@@ -25,3 +25,22 @@ function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
 }
+
+function addMoviesController(){
+    $name = $_REQUEST['name'];
+    $year = $_REQUEST['year'];
+    $length = $_REQUEST['length'];
+    $description = $_REQUEST['description'];
+    $director = $_REQUEST['director'];
+    $category = $_REQUEST['category'];
+    $image = $_REQUEST['image'];
+    $trailer = $_REQUEST['trailer'];
+    $min_age = $_REQUEST['min_age'];
+    $ok = addMovie($name, $year, $length, $description, $director, $category, $image, $trailer, $min_age);
+    if ($ok!=0){
+        return "Le film $name réalisé par $director a été ajouté";
+    }
+    else {
+        return false;
+    }
+}
