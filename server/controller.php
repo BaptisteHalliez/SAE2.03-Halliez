@@ -32,7 +32,7 @@ function addMoviesController(){
     $length = $_REQUEST['length'];
     $description = $_REQUEST['description'];
     $director = $_REQUEST['director'];
-    $category = $_REQUEST['category'];
+    $category = $_REQUEST['id_category'];
     $image = $_REQUEST['image'];
     $trailer = $_REQUEST['trailer'];
     $min_age = $_REQUEST['min_age'];

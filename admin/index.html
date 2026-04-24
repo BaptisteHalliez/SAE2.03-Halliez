@@ -18,11 +18,13 @@
       window.C = {};
 
       C.handlerAddMovie = async function(){
-        // Sélectionne l'élément possédant la classe '.addMovie__form'
+        // Sélectionne l'élément possédant la classe '.addmovie__form'
         let form = document.querySelector('.addmovie__form');
-        let fd = new FormData(form);
-        let res = await DataMovie.add(fd);
-        V.renderLog(res);
+        if (form.reportValidity()){
+          let fd = new FormData(form);
+          let res = await DataMovie.add(fd);
+          V.renderLog(res);
+        }
       }
 
       C.start = function () {

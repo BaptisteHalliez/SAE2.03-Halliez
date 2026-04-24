@@ -6,6 +6,7 @@
       type="text"
       name="name"
       placeholder="Saisir le nom du film"
+      class="addmovie__input"
     />
     <input
       required
@@ -13,7 +14,8 @@
       name="director"
       placeholder="Saisir le nom du réalisateur"
       pattern="[^0-9]*"
-      title="Numbers are not allowed"
+      title="Les chiffres ne sont pas autorisés"
+      class="addmovie__input"
     />
     <input
       required
@@ -22,50 +24,62 @@
       placeholder="Saisir l'année de sortie du film"
       min="1895"
       max="2026"
+      class="addmovie__input"
     />
     <input
       required
       type="number"
       name="length"
       placeholder="Saisir la durée en minute"
+      class="addmovie__input"
     />
-    <input
+    <textarea
       required
-      type="text"
       name="description"
-      placeholder="Saisir le synopsis"
-    />
-    <select required name="category" id="category">
-      <option value="action">Action</option>
-      <option value="comedie">Comédie</option>
-      <option value="drame">Drame</option>
-      <option value="scifi">Science-fiction</option>
-      <option value="animation">Animation</option>
-      <option value="thriller">Thriller</option>
-      <option value="horreur">Horreur</option>
-      <option value="aventure">Aventure</option>
-      <option value="fantaisie">Fantaisie</option>
-      <option value="documentaire">Documentaire</option>
+      placeholder="Saisir le synopsis du film"
+      class="addmovie__input addmovie__desc"
+    ></textarea>
+    <select required name="id_category" class="addmovie__input">
+      <option value="">-- Saisir le genre du film --</option>
+      <option value="1">Action</option>
+      <option value="2">Comédie</option>
+      <option value="3">Drame</option>
+      <option value="4">Science-fiction</option>
+      <option value="5">Animation</option>
+      <option value="6">Thriller</option>
+      <option value="7">Horreur</option>
+      <option value="8">Aventure</option>
+      <option value="9">Fantaisie</option>
+      <option value="10">Documentaire</option>
     </select>
     <input
       required
       type="text"
       name="image"
       placeholder="Saisir le nom de l'affiche"
+      class="addmovie__input"
     />
     <input
       required
       type="text"
       name="trailer"
       placeholder="Saisir l'URL du trailer"
+      class="addmovie__input"
     />
-    <select required name="min_age" id="min_age">
-      <option value="zero">Tous public</option>
-      <option value="dix">10</option>
-      <option value="douze">12</option>
-      <option value="seize">16</option>
-      <option value="dixhuit">18</option>
+    <select required name="min_age" class="addmovie__input">
+      <option value="">-- Saisir la restriction d'âge --</option>
+      <option value="0">Tous public</option>
+      <option value="10">10</option>
+      <option value="12">12</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
     </select>
-    <input onclick="{{handler}}" type="button" value="Add" name="todo" />
   </form>
+  <input
+    onclick="{{handler}}"
+    type="button"
+    value="Add"
+    name="todo"
+    class="addmovie__button"
+  />
 </div>
