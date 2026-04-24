@@ -1,0 +1,20 @@
+<section class="movieDetails">
+    <div class="movie__first">
+        <h4 class="movie__title">{{movieTitle}}</h4>
+        <p class="detail__year">{{movieYear}}</p>
+    </div>
+    <p class="detail__category">{{movieCategory}}</p>
+    <figure class="movie__details">
+      <div class="movie__img-container">
+        <img src="{{movieAffiche}}" alt="affiche-film" class="movie__img" />
+      </div>
+      <figcaption class="details">
+        <iframe src="{{movieTrailer}}" frameborder="0" class="detail__trailer"></iframe>
+        <div class="small__infos">
+            <p class="detail__desc">{{movieDescription}}</p>
+            <p class="detail__director">Réalisé par {{movieDirector}}</p>
+            <p class="detail__age">{{movieRestriction}}</p>
+        </div>
+      </figcaption>
+    </figure>
+</section>

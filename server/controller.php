@@ -44,3 +44,16 @@ function addMoviesController(){
         return false;
     }
 }
+
+function readMoviesDetailsController(){
+    if (empty($_REQUEST['id'])) {
+        return ["status" => "error", "message" => "L'identifiant du film est manquant"];
+    }
+
+    $id = $_REQUEST['id'];
+    $movie = getMovieDetails($id);
+
+    if($movie){
+        return $movie;
+    }
+}

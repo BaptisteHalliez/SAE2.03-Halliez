@@ -24,6 +24,11 @@
 .movie__item {
 }
 
+.movie__btn {
+  text-decoration: none;
+  color: var(--color-gray-dark);
+}
+
 .card {
   display: flex;
   flex-direction: column;

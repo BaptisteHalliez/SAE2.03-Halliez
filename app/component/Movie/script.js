@@ -17,6 +17,7 @@ Movie.format = function (data) {
     let filmHTML = "";
     for (let film of data) {
       let li = templateLi;
+      li = li.replaceAll("{{movieId}}", film.id);
       li = li.replaceAll("{{sourceAffiche}}", "../server/images/" + film.image);
       li = li.replaceAll("{{movieTitle}}", film.name);
       filmHTML += li;
