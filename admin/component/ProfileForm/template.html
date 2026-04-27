@@ -1,0 +1,36 @@
+<div class="addprofile">
+  <h4 class="addprofile__title">Ajouter un utilisateur</h4>
+  <form class="addprofile__form">
+    <input
+      required
+      type="text"
+      name="nom"
+      placeholder="Saisir le nom de l'utilisateur"
+      pattern="[^0-9]*"
+      title="Les chiffres ne sont pas autorisés"
+      class="addprofile__input"
+    />
+    <input
+      required
+      type="text"
+      name="avatar"
+      placeholder="Saisir la photo de profil"
+      class="addprofile__input"
+    />
+    <select required name="min_age" class="addprofile__input">
+      <option value="">-- Saisir la restriction d'âge --</option>
+      <option value="0">Tous public</option>
+      <option value="10">10</option>
+      <option value="12">12</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
+    </select>
+  </form>
+  <input
+    onclick="{{handler}}"
+    type="button"
+    value="Add"
+    name="todo"
+    class="addprofile__button"
+  />
+</div>

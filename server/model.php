@@ -61,3 +61,16 @@ function getMovieDetails($id){
     $res = $stmt->fetch(PDO::FETCH_OBJ);
     return $res;
 }
+
+function addProfile($n, $a, $m){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "INSERT INTO Profile (nom, avatar, min_age)
+    VALUES (:nom, :avatar, :min_age)";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':nom', $n);
+    $stmt->bindParam(':avatar', $a);
+    $stmt->bindParam(':min_age', $m);
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res;
+}

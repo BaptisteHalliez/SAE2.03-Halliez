@@ -70,3 +70,16 @@ function readMoviesDetailsController(){
         return $movie;
     }
 }
+
+function addProfileController(){
+    $nom = $_REQUEST['nom'];
+    $avatar = $_REQUEST['avatar'];
+    $min_age = $_REQUEST['min_age'];
+    $ok = addProfile($nom, $avatar, $min_age);
+    if ($ok!=0){
+        return "Le profil de $nom a été ajouté";
+    }
+    else {
+        return false;
+    }
+}
