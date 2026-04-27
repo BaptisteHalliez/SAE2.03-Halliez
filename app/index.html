@@ -17,8 +17,9 @@
       import { DataMovie } from "./data/dataMovie.js";
       import { Movie } from "./component/Movie/script.js";
       import { MovieDetails } from "./component/MovieDetails/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
 
-      let movie = await DataMovie.requestMovies();
+      let movies = await DataMovie.requestMovies();
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -26,7 +27,7 @@
       window.C = {};
 
       C.handlerHome = function () {
-        V.renderMovie(movie)
+        V.renderMovie(movies)
       };
       
       C.handlerAbout = function () {
@@ -35,15 +36,14 @@
         );
       };
 
-
       C.handlerMovieDetail = async function(id){
         let data = await DataMovie.requestMovieDetails(id);
         V.renderMovieDetails(data);
       }
-
+      
       C.start = function () {
         V.renderNavBar("C.handlerHome()", "C.handlerAbout()");
-        V.renderMovie(movie);
+        V.renderMovieCategory(movies);
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -69,6 +69,16 @@
       V.renderMovieDetails = function (data){
         let content = document.querySelector('#content');
         content.innerHTML = MovieDetails.format(data);
+      }
+
+      V.renderMovieCategory = function (category){
+        let content = document.querySelector('#content');
+        let moviesHTML = "";
+        for (let categoryName in category){
+          let categoryMovie = category[categoryName];
+          moviesHTML += MovieCategory.format(categoryName, categoryMovie);
+        }
+        content.innerHTML = moviesHTML;
       }
 
       C.start(); // Démarre l'application

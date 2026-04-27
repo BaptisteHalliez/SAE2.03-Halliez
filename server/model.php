@@ -23,7 +23,7 @@ function getAllMovies(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select id, name, image from Movie";
+    $sql = "SELECT Movie.id, Movie.name, Movie.image, Category.name AS category_name FROM Movie INNER JOIN Category ON Category.id = Movie.id_category ORDER BY Category.name";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Exécute la requête SQL
