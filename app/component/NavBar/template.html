@@ -1,6 +1,11 @@
 <nav class="navbar font-sans">
   <ul class="navbar__list">
     <li class="navbar__item" onclick="{{hHome}}">Home</li>
-    <li class="navbar__item" onclick="{{hAbout}}">About</li>
+    <li class="navbar__item" onclick="{{hProfiles}}">
+      <select name="profile" class="profile">
+        {{optionProfiles}}
+      </select>
+    </li>
+    <li class="navbar__item" onclick="{{hDeconnexion}}">Se déconnecter</li>
   </ul>
 </nav>

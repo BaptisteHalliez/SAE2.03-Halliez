@@ -11,8 +11,7 @@ AddMovieForm.format = function(data, handler){
     
     let movieList ="";
     for (let category of data){
-        console.log(category);
-        let op = templateOp
+        let op = templateOp;
         op = op.replaceAll('{{categoryId}}', category.id);
         op = op.replaceAll('{{categoryName}}', category.name);
         movieList += op;

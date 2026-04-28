@@ -87,3 +87,7 @@ function addProfileController(){
 function readCategoryController(){
     return readCategory();
 }
+
+function readProfilesController(){
+    return readProfiles();
+}

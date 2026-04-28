@@ -15,11 +15,13 @@
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataProfile.js";
       import { Movie } from "./component/Movie/script.js";
       import { MovieDetails } from "./component/MovieDetails/script.js";
       import { MovieCategory } from "./component/MovieCategory/script.js";
 
       let movies = await DataMovie.requestMovies();
+      let profiles = await DataProfile.read();
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -27,14 +29,14 @@
       window.C = {};
 
       C.handlerHome = function () {
-        V.renderMovieCategory(movies)
-      };
-      
-      C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-        );
-      };
+        V.renderMovieCategory(movies);
+      }
+
+
+      C.handlerDeconnexion = function (){
+        document.querySelector('#content').innerHTML =
+          "<p class='profile__disconnected'>Veuillez vous connecter pour voir les films</p>";
+      }
 
       C.handlerMovieDetail = async function(id){
         let data = await DataMovie.requestMovieDetails(id);
@@ -42,9 +44,9 @@
       }
       
       C.start = function () {
-        V.renderNavBar("C.handlerHome()", "C.handlerAbout()");
+        V.renderNavBar("C.handlerHome()", "C.handlerProfiles", profiles, "C.handlerDeconnexion()");
         V.renderMovieCategory(movies);
-      };
+      }
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
@@ -56,10 +58,11 @@
        * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
        * formaté par le composant NavBar.
        */
-      V.renderNavBar = function (hHome, hAbout) {
+      V.renderNavBar = function (hHome, hProfiles, profile, hDeconnexion) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hHome, hAbout);
+        header.innerHTML = NavBar.format(hHome, hProfiles, profile, hDeconnexion);
       };
+
 
       V.renderMovie = function (data){
         let content = document.querySelector('#content');
