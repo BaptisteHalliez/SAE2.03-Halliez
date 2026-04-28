@@ -38,7 +38,20 @@ function readMoviesCategoryController(){
     }
     return $category;
 }
-
+    
+function readMoviesDetailsController(){
+    if (empty($_REQUEST['id'])) {
+        return ["status" => "error", "message" => "L'identifiant du film est manquant"];
+    }
+    
+    $id = $_REQUEST['id'];
+    $movie = getMovieDetails($id);
+    
+    if($movie){
+        return $movie;
+    }
+}
+    
 function addMoviesController(){
     $name = $_REQUEST['name'];
     $year = $_REQUEST['year'];
@@ -58,19 +71,6 @@ function addMoviesController(){
     }
 }
 
-function readMoviesDetailsController(){
-    if (empty($_REQUEST['id'])) {
-        return ["status" => "error", "message" => "L'identifiant du film est manquant"];
-    }
-
-    $id = $_REQUEST['id'];
-    $movie = getMovieDetails($id);
-
-    if($movie){
-        return $movie;
-    }
-}
-
 function addProfileController(){
     $nom = $_REQUEST['nom'];
     $avatar = $_REQUEST['avatar'];
@@ -82,4 +82,8 @@ function addProfileController(){
     else {
         return false;
     }
+}
+
+function readCategoryController(){
+    return readCategory();
 }

@@ -40,17 +40,8 @@
       class="addmovie__input addmovie__desc"
     ></textarea>
     <select required name="id_category" class="addmovie__input">
-      <option value="">-- Saisir le genre du film --</option>
-      <option value="1">Action</option>
-      <option value="2">Comédie</option>
-      <option value="3">Drame</option>
-      <option value="4">Science-fiction</option>
-      <option value="5">Animation</option>
-      <option value="6">Thriller</option>
-      <option value="7">Horreur</option>
-      <option value="8">Aventure</option>
-      <option value="9">Fantaisie</option>
-      <option value="10">Documentaire</option>
+      <option value="" class="addmovie__opt">-- Saisir le genre du film --</option>
+      {{optionCategory}}
     </select>
     <input
       required
@@ -67,12 +58,12 @@
       class="addmovie__input"
     />
     <select required name="min_age" class="addmovie__input">
-      <option value="">-- Saisir la restriction d'âge --</option>
-      <option value="0">Tous public</option>
-      <option value="10">10</option>
-      <option value="12">12</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
+      <option value="" class="addmovie__opt">-- Saisir la restriction d'âge --</option>
+      <option value="0" class="addmovie__opt">Tous public</option>
+      <option value="10" class="addmovie__opt">10</option>
+      <option value="12" class="addmovie__opt">12</option>
+      <option value="16" class="addmovie__opt">16</option>
+      <option value="18" class="addmovie__opt">18</option>
     </select>
   </form>
   <input

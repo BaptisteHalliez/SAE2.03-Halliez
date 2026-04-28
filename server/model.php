@@ -33,6 +33,16 @@ function getAllMovies(){
     return $res; // Retourne les résultats
 }
 
+function getMovieDetails($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT Movie.*, Category.name AS category_name FROM Movie INNER JOIN Category ON Movie.id_category=Category.id WHERE Movie.id= :id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $res = $stmt->fetch(PDO::FETCH_OBJ);
+    return $res;
+}
+
 function addMovie($n, $y, $l, $de, $di, $c, $i, $t, $m){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "INSERT INTO Movie (name, year, length, description, director, id_category, image, trailer, min_age)
@@ -52,16 +62,6 @@ function addMovie($n, $y, $l, $de, $di, $c, $i, $t, $m){
     return $res;
 }
 
-function getMovieDetails($id){
-    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.*, Category.name AS category_name FROM Movie INNER JOIN Category ON Movie.id_category=Category.id WHERE Movie.id= :id";
-    $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $res = $stmt->fetch(PDO::FETCH_OBJ);
-    return $res;
-}
-
 function addProfile($n, $a, $m){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "INSERT INTO Profile (nom, avatar, min_age)
@@ -73,4 +73,12 @@ function addProfile($n, $a, $m){
     $stmt->execute();
     $res = $stmt->rowCount();
     return $res;
+}
+
+function readCategory(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT id, name FROM Category";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
 }

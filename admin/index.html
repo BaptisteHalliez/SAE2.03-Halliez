@@ -18,6 +18,8 @@
       import { AddMovieForm } from "./component/AddMovieForm/script.js";
       import { AddProfileForm } from "./component/ProfileForm/script.js";
 
+      let Category = await DataMovie.requestCategories();
+
       window.C = {};
 
       C.handlerAddMovie = async function(){
@@ -55,7 +57,7 @@
 
       V.renderMovie = function(handler){
         let content = document.querySelector('#addMovie');
-        content.innerHTML = AddMovieForm.format(handler);
+        content.innerHTML = AddMovieForm.format(Category, handler);
       }
 
       V.renderProfile = function(handler){
