@@ -1,0 +1,36 @@
+.accueil {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1fr, 1);
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-bg);
+  
+  .accueil__list {
+    text-align: center;
+    
+    .accueil__btn {
+      width: 15rem;
+      padding: 1rem;
+      display: block;
+      border: solid 2px var(--color-fg);
+      border-radius: 7px;
+      text-decoration: none;
+      color: var(--color-fg);
+      transition: all .2s ease-in-out;
+    }
+    
+    .accueil__btn:hover {
+        font-weight: 600;
+        box-shadow: 0 0 10px 0 var(--color-fg);
+    }
+  }
+}
+
+@media (min-width: 40rem) {
+    .accueil {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

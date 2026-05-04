@@ -22,12 +22,19 @@ require("model.php");
 
 
 function readMoviesController(){
-    $movies = getAllMovies();
+    $min_age = isset($_REQUEST['min_age']) ? $_REQUEST['min_age'] : 0;
+    $movies = getAllMovies($min_age);
     return $movies;
 }
 
-function readMoviesCategoryController(){
-    $movies = getAllMovies();
+function readMoviesCategoryController($min_age = 0){
+    if (isset($_REQUEST['min_age'])==false){
+        return false;
+    }
+
+    $min_age = $_REQUEST['min_age'];
+
+    $movies = getAllMovies($min_age);
     $category = [];
     foreach($movies as $m){
         $categoryName = $m->category_name;
@@ -89,5 +96,5 @@ function readCategoryController(){
 }
 
 function readProfilesController(){
-    return readProfiles();
+    return readProfiles(null);
 }

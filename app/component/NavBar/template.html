@@ -1,8 +1,8 @@
 <nav class="navbar font-sans">
   <ul class="navbar__list">
     <li class="navbar__item" onclick="{{hHome}}">Home</li>
-    <li class="navbar__item" onclick="{{hProfiles}}">
-      <select name="profile" class="profile">
+    <li class="navbar__item">
+      <select name="profile" class="profile" onchange="{{hProfiles}}">
         {{optionProfiles}}
       </select>
     </li>

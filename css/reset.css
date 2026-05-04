@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--ff-sans);
+  color: var(--fg-body);
+  background-color: var(--bg-body);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

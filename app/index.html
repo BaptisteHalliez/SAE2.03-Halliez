@@ -20,7 +20,7 @@
       import { MovieDetails } from "./component/MovieDetails/script.js";
       import { MovieCategory } from "./component/MovieCategory/script.js";
 
-      let movies = await DataMovie.requestMovies();
+      let movies = await DataMovie.requestMovies(0);
       let profiles = await DataProfile.read();
 
       // Controleur
@@ -29,23 +29,40 @@
       window.C = {};
 
       C.handlerHome = function () {
-        V.renderMovieCategory(movies);
+        V.renderMovieCategory(movies, "C.handlerMovieDetail()");
+        C.handlerSelectedProfiles();
       }
-
 
       C.handlerDeconnexion = function (){
-        document.querySelector('#content').innerHTML =
-          "<p class='profile__disconnected'>Veuillez vous connecter pour voir les films</p>";
-      }
+            document.querySelector('#content').innerHTML = "<p class='profile__disconnected'>Veuillez vous connecter pour voir les films</p>"
+            return;
+        }
 
       C.handlerMovieDetail = async function(id){
         let data = await DataMovie.requestMovieDetails(id);
         V.renderMovieDetails(data);
       }
       
+      C.handlerSelectedProfiles = async function () {
+        let selectProfile = document.querySelector(".profile");
+        let content = document.querySelector('#content');
+
+        let selectProfileMenu = selectProfile.value;
+
+        if (!selectProfileMenu) {
+          content.innerHTML = `<h2 class="profile__disconnected">Veuillez sélectionner un profil</h2>`
+          return;
+        }
+
+        let profileSelected = profiles.find(p => p.id == selectProfileMenu);
+        let data = await DataMovie.requestMovies(profileSelected.min_age);
+        V.renderMovieCategory(data, "C.handlerMovieDetail()")
+      }
+
       C.start = function () {
-        V.renderNavBar("C.handlerHome()", "C.handlerProfiles", profiles, "C.handlerDeconnexion()");
+        V.renderNavBar("C.handlerHome()", "C.handlerSelectedProfiles()", profiles, "C.handlerDeconnexion()");
         V.renderMovieCategory(movies);
+        C.handlerSelectedProfiles();
       }
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -77,11 +94,19 @@
       V.renderMovieCategory = function (category){
         let content = document.querySelector('#content');
         let moviesHTML = "";
+
         for (let categoryName in category){
           let categoryMovie = category[categoryName];
           moviesHTML += MovieCategory.format(categoryName, categoryMovie);
         }
-        content.innerHTML = moviesHTML;
+
+        if (moviesHTML === ""){
+          content.innerHTML = 
+          `<p class="movie__empty">Aucun film disponible pour cette tranche d'âge</p>`
+        }
+        else {
+          content.innerHTML = moviesHTML;
+        }
       }
 
       C.start(); // Démarre l'application
