@@ -58,6 +58,18 @@ function readMoviesDetailsController(){
         return $movie;
     }
 }
+
+function addFavoritesController(){
+    $profile = $_REQUEST['id_profile'];
+    $movie = $_REQUEST['id_movie'];
+    $ok = addToFavorites($profile, $movie);
+    if ($ok!=0){
+        return "Le film a été ajouté à vos favoris";
+    }
+    else {
+        return false;
+    }
+}
     
 function addMoviesController(){
     $name = $_REQUEST['name'];
@@ -94,6 +106,12 @@ function addProfileController(){
 
 function readCategoryController(){
     return readCategory();
+}
+
+function readFavoritesController(){
+    $profile = $_REQUEST["id_profile"];
+    $favorites = getAllFavorites($profile);
+    return $favorites;
 }
 
 function readProfilesController(){

@@ -21,6 +21,7 @@
   }
 
   .movie__details {
+    max-width: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,7 +65,12 @@
 @media (min-width: 40rem) {
   .movieDetails {
     .movie__details {
+      max-width: none;
       flex-direction: row;
+
+      .details {
+        max-width: 35rem;
+      }
     }
   }
 }

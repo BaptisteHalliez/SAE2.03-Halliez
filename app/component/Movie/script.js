@@ -6,20 +6,35 @@ let templateLi = await templateLiFile.text();
 
 let Movie = {};
 
-Movie.format = function (data) {
+Movie.format = function (movies, favorites = []) {
   let html = template;
-  if (data.length == 0) {
+  if (movies.length == 0) {
     return html.replaceAll(
       "{{movieList}}",
       "<p class='movie__empty'>Aucun film n'est disponible pour le moment</p>",
     );
   } else {
     let filmHTML = "";
-    for (let film of data) {
+    for (let film of movies) {
       let li = templateLi;
       li = li.replaceAll("{{movieId}}", film.id);
       li = li.replaceAll("{{sourceAffiche}}", film.image);
       li = li.replaceAll("{{movieTitle}}", film.name);
+
+      let Favorited = false;
+      for (let i = 0; i < favorites.length; i++) {
+        if (favorites[i].id == film.id) {
+          Favorited = true;
+        }
+      }
+      let favBtn = "";
+      if (Favorited) {
+        favBtn = "";
+      }
+      else {
+        favBtn = "C.handlerAddFavorite(" + film.id + ")";
+      }
+      li = li.replaceAll("{{favBtn}}", favBtn);
       filmHTML += li;
     }
     html = html.replaceAll("{{movieList}}", filmHTML);

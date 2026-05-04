@@ -35,6 +35,16 @@ function getAllMovies($m = 0){
     return $res; // Retourne les résultats
 }
 
+function getAllFavorites($p){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT Movie.* FROM Movie INNER JOIN Favorite ON Movie.id = Favorite.id_movie WHERE Favorite.id_profile = :profile";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':profile', $p);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+
 function getMovieDetails($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.*, Category.name AS category_name FROM Movie INNER JOIN Category ON Movie.id_category=Category.id WHERE Movie.id= :id";
@@ -79,6 +89,17 @@ function addProfile($i, $n, $a, $m){
     $stmt->bindParam(':avatar', $a);
     $stmt->bindParam(':min_age', $m);
     $res = $stmt->execute();
+    return $res;
+}
+
+function addToFavorites($p, $m){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "INSERT INTO Favorite (id_profile, id_movie) VALUES (:profile, :movie)";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':profile', $p);
+    $stmt->bindParam(':movie', $m);
+    $stmt->execute();
+    $res = $stmt->rowCount();
     return $res;
 }
 
