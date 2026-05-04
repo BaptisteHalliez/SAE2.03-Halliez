@@ -37,15 +37,29 @@
         let form = document.querySelector('.addprofile__form');
         if (form.reportValidity()){
           let fd = new FormData(form);
+          console.log("ID envoyé au serveur :", fd.get("id"));
           let res = await DataProfile.add(fd);
           V.renderLog(res);
         }
       }
 
-      C.start = function () {
+      C.handlerSelectProfile = async function(id){
+        let p = DataProfile.getProfileId(id);
+        
+        if (p) {
+            document.querySelector('#profile_name').value = p.nom;
+            document.querySelector('#profile_avatar').value = p.avatar;
+            document.querySelector('#profile_age').value = p.min_age;
+        } else {
+            document.querySelector('#profile_form').reset();
+        }
+      }
+
+      C.start = async function () {
+        let profiles = await DataProfile.read();
         V.renderLog("Démarrage de l'application");
         V.renderMovie("C.handlerAddMovie()");
-        V.renderProfile("C.handlerAddProfile()");
+        V.renderProfile("C.handlerAddProfile()", profiles);
       };
 
       window.V = {};
@@ -60,9 +74,9 @@
         content.innerHTML = AddMovieForm.format(Category, handler);
       }
 
-      V.renderProfile = function(handler){
+      V.renderProfile = function(handler, profiles){
         let content = document.querySelector('#addProfile');
-        content.innerHTML = AddProfileForm.format(handler);
+        content.innerHTML = AddProfileForm.format(handler, profiles);
       }
 
       C.start();

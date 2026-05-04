@@ -64,16 +64,21 @@ function addMovie($n, $y, $l, $de, $di, $c, $i, $t, $m){
     return $res;
 }
 
-function addProfile($n, $a, $m){
+function addProfile($i, $n, $a, $m){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "INSERT INTO Profile (nom, avatar, min_age)
-    VALUES (:nom, :avatar, :min_age)";
-    $stmt = $cnx->prepare($sql);
+    if ($i == "" || $i == null) {
+        $sql = "INSERT INTO Profile (nom, avatar, min_age) VALUES (:nom, :avatar, :min_age)";
+        $stmt = $cnx->prepare($sql);
+    }
+    else {
+        $sql = "UPDATE Profile SET nom=:nom, avatar=:avatar, min_age=:min_age WHERE id=:id";
+        $stmt = $cnx->prepare($sql);
+        $stmt->bindParam(':id', $i);
+    }
     $stmt->bindParam(':nom', $n);
     $stmt->bindParam(':avatar', $a);
     $stmt->bindParam(':min_age', $m);
-    $stmt->execute();
-    $res = $stmt->rowCount();
+    $res = $stmt->execute();
     return $res;
 }
 

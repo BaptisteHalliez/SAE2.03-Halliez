@@ -79,13 +79,14 @@ function addMoviesController(){
 }
 
 function addProfileController(){
+    $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null; 
     $nom = $_REQUEST['nom'];
     $avatar = $_REQUEST['avatar'];
     $min_age = $_REQUEST['min_age'];
-    $ok = addProfile($nom, $avatar, $min_age);
-    if ($ok!=0){
-        return "Le profil de $nom a été ajouté";
-    }
+    $ok = addProfile($id, $nom, $avatar, $min_age);
+    if ($ok){ 
+        return "Le profil de $nom a été ajouté / modifié";
+    } 
     else {
         return false;
     }
