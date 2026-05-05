@@ -119,3 +119,14 @@ function readProfiles($i){
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res;
 }
+
+function removeFromFavorites($p, $m) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "DELETE FROM Favorite WHERE id_profile=:profile AND id_movie=:movie";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':profile', $p);
+    $stmt->bindParam(':movie', $m);
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res;
+}

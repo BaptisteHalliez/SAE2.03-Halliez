@@ -64,7 +64,7 @@ function addFavoritesController(){
     $movie = $_REQUEST['id_movie'];
     $ok = addToFavorites($profile, $movie);
     if ($ok!=0){
-        return "Le film a été ajouté à vos favoris";
+        return "Le film $movie, a été ajouté à vos favoris";
     }
     else {
         return false;
@@ -116,4 +116,16 @@ function readFavoritesController(){
 
 function readProfilesController(){
     return readProfiles(null);
+}
+
+function removeFavoritesController(){
+    $profile = $_REQUEST['id_profile'];
+    $movie = $_REQUEST['id_movie'];
+    $ok = removeFromFavorites($profile, $movie);
+    if ($ok!=0){
+        return "Le film $movie, a été retiré de vos favoris";
+    }
+    else {
+        return false;
+    }
 }
