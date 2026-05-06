@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap');
+
+
+:root {
+  --clr-white: hsl(240, 100%, 99%);
+  --clr-black: hsla(246, 100%, 6%, 0.75);
+  --clr-faded-black: hsla(240, 50%, 4%, 0.9);
+  --clr-faded-gray: hsla(240, 50%, 4%, 0.2);
+  --clr-dark: hsl(243, 40%, 11%);
+  --clr-dark-blue: hsl(246, 100%, 6%);
+  --clr-grayish-blue: hsl(245, 26%, 17%);
+  --clr-blue: hsl(232, 100%, 55%);
+  --clr-gray: hsl(246, 17%, 23%);
+  --clr-light-gray: hsl(248, 6%, 73%);
+  
+  --ff-titles: "Sora", sans-serif;
+  --ff-body: "Inter", sans-serif;
+  
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.25rem;
+  --fs-28: 1.75rem;
+  
+  --fw-semi-bold: 600;
+  
+  --ls-menus: 0.24px;
+  --ls-titles: 0.36px;
+  
+  --opacity: 0.9;
+  
+  /* Sementic Tokens */
+  --bg-body: var(--clr-dark-blue);
+  --bg-info: var(--clr-white);
+  --bg-nav: var(--clr-dark);
+  --bg-burger-nav: var(--clr-grayish-blue);
+  --bg-small-infos: var(--clr-dark);
+  --bg-movie-btns: var(--clr-dark);
+  --bg-overlay-trailer: var(--clr-faded-black) 5%, var(--clr-faded-gray) 60%;
+
+  --bg-hover-movie-btns: var(--clr-faded-black);
+  --bg-hover-arrows-on-arrows: var(--clr-dark-blue);
+  --bg-hover-arrows-off-arrows: var(--clr-black);
+
+  --fg-body: var(--clr-white);
+  --fg-info: var(--clr-blue);
+  --fg-nav: var(--clr-light-gray);
+  --fg-movie-btns: var(--clr-light-gray);
+
+  --border-movie-btns: var(--clr-light-gray);
+
+}

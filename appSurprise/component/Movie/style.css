@@ -1,0 +1,135 @@
+.carrousel {
+  position: relative;
+  display: flex;
+
+  .carrousel__arrow {
+    height: 100%;
+    position: absolute;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+    background: transparent;
+    transition: all .2s ease-in-out;
+
+    .icone {
+      width: 2rem;
+      height: 100%;
+    }
+  }
+
+  .left__arrow {
+    left: 0;
+    box-shadow: inset 45px 0 10px -15px var(--bg-hover-arrows-off-arrows);
+
+    .icone {
+
+      &:hover {
+        box-shadow: inset 45px 0 10px -15px var(--bg-hover-arrows-on-arrows);
+      }
+    }
+  }
+
+  .right__arrow {
+    right: 0;
+    box-shadow: inset -45px 0 10px -15px var(--bg-hover-arrows-off-arrows);
+
+    .icone {
+
+      &:hover {
+        box-shadow: inset -45px 0 10px -15px var(--bg-hover-arrows-on-arrows);
+      }
+    }
+  }
+
+  .movie {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    /* scrollbar-width: none; */
+    scroll-snap-type: x mandatory;
+
+    .movie__title {
+      font-size: var(--fs-18);
+      font-weight: var(--fw-semi-bold);
+    }
+
+    .movie__movies {
+      display: flex;
+      gap: 1rem;
+
+      .movie__item {
+        flex: 0 0 10rem;
+        scroll-snap-align: start;
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          height: 100%;
+
+          .card__img-container {
+            .card__img {
+              width: 100%;
+              aspect-ratio: 3 / 4;
+              border-radius: 4px;
+            }
+          }
+
+          .card__infos {
+            display: flex;
+            display: none;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 1rem;
+
+            .card__title {
+              font-size: 1.5rem;
+            }
+
+            .card__addFavorite {
+              cursor: pointer;
+            }
+          }
+        }
+        @media (min-width: 40rem) {
+          flex: 0 0 15rem;
+        }
+      }
+    }
+
+    .movie__empty {
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+  &:hover {
+    .carrousel__arrow {
+      opacity: var(--opacity);
+
+      .left__arrow {
+
+        .icone {
+          box-shadow: inset 45px 0 10px -15px transparent;
+
+          &:hover {
+            box-shadow: inset 45px 0 10px -15px var(--bg-hover-arrows-on-arrows);
+          }
+        }
+      }
+
+      .right__arrow {
+
+        .icone {
+          box-shadow: inset -45px 0 10px -15px transparent;
+
+          &:hover {
+            box-shadow: inset -45px 0 10px -15px
+              var(--bg-hover-arrows-on-arrows);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>SAE2.03 APP</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/base.css" />
+  </head>
+
+  <body>
+    <header id="header"></header>
+
+    <section id="content"></section>
+
+    <script type="module">
+      import { NavBar } from "./component/NavBar/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataProfile.js";
+      import { DataFavorite } from "./data/dataFavorite.js";
+      import { Movie } from "./component/Movie/script.js";
+      import { MovieDetails } from "./component/MovieDetails/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
+      import { MovieFavorite } from "./component/MovieFavorite/script.js";
+
+      let movies = await DataMovie.requestMovies(0);
+      let moviesData = null;
+      let profiles = await DataProfile.read();
+      let profileSelected = null;
+      let favoriteSelected = null;
+      let currentMovieDetailsId = null;
+      let content = document.querySelector("#content");
+      content.innerHTML =
+        "<p class='home'>Veuillez vous connecter pour pouvoir naviguer sur le catalogue</p>";
+
+      // Controleur
+      // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
+      // Une fois l'application terminée, on pourrait remettre let C.
+      window.C = {};
+
+      C.handlerHome = function () {
+        currentMovieDetailsId = null;
+        C.handlerSelectedProfiles();
+      };
+
+      C.handlerDeconnexion = function () {
+        document.querySelector("#content").innerHTML =
+          "<h2 class='profile__disconnected'>Veuillez vous connecter pour voir les films</h2>";
+        return;
+      };
+
+      C.handlerMovieDetail = async function (id) {
+        currentMovieDetailsId = id;
+        let data = await DataMovie.requestMovieDetails(id);
+        V.renderMovieDetails(data, favoriteSelected);
+      };
+
+      C.handlerSelectedProfiles = async function () {
+        let selectProfile = document.querySelector(".profile");
+        let content = document.querySelector("#content");
+
+        let selectProfileMenu = selectProfile.value;
+
+        if (!selectProfileMenu) {
+          content.innerHTML = `<h2 class="profile__disconnected">Veuillez sélectionner un profil</h2>`;
+          return;
+        }
+
+        profileSelected = profiles.find((p) => p.id == selectProfileMenu);
+        moviesData = await DataMovie.requestMovies(profileSelected.min_age);
+        favoriteSelected = await DataFavorite.requestFavorite(
+          profileSelected.id,
+        );
+        V.renderMovieCategory(moviesData, favoriteSelected);
+      };
+
+      C.handlerAddFavorite = async function (id_movie) {
+        await DataFavorite.addFavorite(profileSelected.id, id_movie);
+        alert("Le film a été ajouté à vos favoris");
+        favoriteSelected = await DataFavorite.requestFavorite(
+          profileSelected.id,
+        );
+
+        if (currentMovieDetailsId !== null) {
+          C.handlerMovieDetail(currentMovieDetailsId);
+        } else {
+          V.renderMovieCategory(moviesData, favoriteSelected);
+        }
+      };
+
+      C.handlerRemoveFavorite = async function (id_movie) {
+        await DataFavorite.removeFavorite(profileSelected.id, id_movie);
+        alert("Le film a été retiré de vos favoris");
+        favoriteSelected = await DataFavorite.requestFavorite(
+          profileSelected.id,
+        );
+
+        if (currentMovieDetailsId !== null) {
+          C.handlerMovieDetail(currentMovieDetailsId);
+        } else {
+          V.renderMovieCategory(moviesData, favoriteSelected);
+        }
+      };
+
+      C.start = function () {
+        V.renderNavBar(
+          "C.handlerHome()",
+          "C.handlerSelectedProfiles()",
+          profiles,
+          "C.handlerDeconnexion()",
+        );
+        C.handlerSelectedProfiles();
+      };
+
+      // Vue (contient tout ce qui est relatif à l'affichage)
+      window.V = {};
+
+      /**
+       * V.renderNavBar
+       *
+       * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
+       * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
+       * formaté par le composant NavBar.
+       */
+      V.renderNavBar = function (hHome, hProfiles, profile, hDeconnexion) {
+        let header = document.querySelector("#header");
+        header.innerHTML = NavBar.format(
+          hHome,
+          hProfiles,
+          profile,
+          hDeconnexion,
+        );
+      };
+
+      V.renderMovie = function (movies) {
+        let content = document.querySelector("#content");
+        content.innerHTML = Movie.format(movies);
+      };
+
+      V.renderMovieDetails = function (data, favorites = []) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieDetails.format(data, favorites);
+      };
+
+      V.renderMovieCategory = function (category, favorites = []) {
+        let content = document.querySelector("#content");
+        let finalHTML = "";
+
+        if (favorites && favorites.length > 0) {
+          finalHTML += MovieFavorite.format(favorites);
+        }
+
+        let moviesHTML = "";
+
+        for (let categoryName in category) {
+          let categoryMovie = category[categoryName];
+          moviesHTML += MovieCategory.format(categoryName, categoryMovie);
+        }
+
+        finalHTML += moviesHTML;
+
+        if (finalHTML === "") {
+          content.innerHTML = `<p class="movie__empty">Aucun film disponible pour cette tranche d'âge</p>`;
+        } else {
+          content.innerHTML = finalHTML;
+        }
+      };
+
+      V.renderFavorite = function (favorites, movies) {
+        let content = document.querySelector("#content");
+        let moviesHTML = MovieCategory.format(movies);
+        let favsHTML = Favorite.format(favorites);
+        if (favsHTML) {
+          moviesHTML += favsHTML;
+        }
+        content.innerHTML = moviesHTML;
+      };
+
+      C.start(); // Démarre l'application
+    </script>
+  </body>
+</html>
+<script type="module"></script>

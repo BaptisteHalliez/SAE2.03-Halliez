@@ -1,0 +1,54 @@
+.addprofile {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .addprofile__title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .addprofile__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .addprofile__input {
+    height: 3rem;
+    font-family: var(--ff-sans);
+    font-size: 1.25rem;
+
+    .addprofile__opt {
+    }
+  }
+
+  .addprofile__button {
+    font-weight: 600;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 30rem) {
+  .addprofile {
+    .addprofile__form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .addprofile__input {
+        max-width: 30rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 60rem) {
+  .addprofile {
+    .addprofile__form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

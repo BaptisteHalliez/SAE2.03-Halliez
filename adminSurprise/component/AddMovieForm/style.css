@@ -1,0 +1,62 @@
+.addmovie {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .addmovie__title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .addmovie__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    .addmovie__input {
+      height: 3rem;
+      font-family: var(--ff-sans);
+      font-size: 1.25rem;
+
+      .addmovie__opt {
+      }
+    }
+
+    .addmovie__desc {
+      max-width: 25rem;
+      min-height: 3rem;
+    }
+  }
+
+  .addmovie__button {
+    font-weight: 600;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 30rem) {
+  .addmovie {
+    .addmovie__form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .addmovie__input {
+        max-width: 30rem;
+      }
+      .addmovie__desc {
+        max-width: 30rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 60rem) {
+  .addmovie {
+    .addmovie__form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

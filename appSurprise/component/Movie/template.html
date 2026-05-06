@@ -1,0 +1,44 @@
+<div class="carrousel">
+  <button class="carrousel__arrow left__arrow">
+    <svg class="icone">
+      <use xlink:href="#leftarrow"></use>
+    </svg>
+  </button>
+
+  <div class="movie">
+    <ul class="movie__movies">
+      {{movieList}}
+    </ul>
+  </div>
+
+  <button class="carrousel__arrow right__arrow">
+    <svg class="icone">
+      <use xlink:href="#rightarrow"></use>
+    </svg>
+  </button>
+</div>
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  style="position: absolute; width: 0; height: 0; overflow: hidden"
+>
+  <symbol id="leftarrow" viewBox="0 0 24 24">
+    <path
+      d="M15 19L8 12L15 5"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </symbol>
+  <symbol id="rightarrow" viewBox="0 0 24 24">
+    <path
+      d="M9 5L16 12L9 19"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </symbol>
+</svg>

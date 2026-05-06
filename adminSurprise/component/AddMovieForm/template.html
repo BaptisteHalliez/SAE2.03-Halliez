@@ -1,0 +1,76 @@
+<div class="addmovie">
+  <h4 class="addmovie__title">Ajouter un film</h4>
+  <form class="addmovie__form">
+    <input
+      required
+      type="text"
+      name="name"
+      placeholder="Saisir le nom du film"
+      class="addmovie__input"
+    />
+    <input
+      required
+      type="text"
+      name="director"
+      placeholder="Saisir le nom du réalisateur"
+      pattern="[^0-9]*"
+      title="Les chiffres ne sont pas autorisés"
+      class="addmovie__input"
+    />
+    <input
+      required
+      type="number"
+      name="year"
+      placeholder="Saisir l'année de sortie du film"
+      min="1895"
+      max="2026"
+      class="addmovie__input"
+    />
+    <input
+      required
+      type="number"
+      name="length"
+      placeholder="Saisir la durée en minute"
+      class="addmovie__input"
+    />
+    <textarea
+      required
+      name="description"
+      placeholder="Saisir le synopsis du film"
+      class="addmovie__input addmovie__desc"
+    ></textarea>
+    <select required name="id_category" class="addmovie__input">
+      <option value="" class="addmovie__opt">-- Saisir le genre du film --</option>
+      {{optionCategory}}
+    </select>
+    <input
+      required
+      type="text"
+      name="image"
+      placeholder="Saisir le nom de l'affiche"
+      class="addmovie__input"
+    />
+    <input
+      required
+      type="text"
+      name="trailer"
+      placeholder="Saisir l'URL du trailer"
+      class="addmovie__input"
+    />
+    <select required name="min_age" class="addmovie__input">
+      <option value="" class="addmovie__opt">-- Saisir la restriction d'âge --</option>
+      <option value="0" class="addmovie__opt">Tous public</option>
+      <option value="10" class="addmovie__opt">10</option>
+      <option value="12" class="addmovie__opt">12</option>
+      <option value="16" class="addmovie__opt">16</option>
+      <option value="18" class="addmovie__opt">18</option>
+    </select>
+  </form>
+  <input
+    onclick="{{handler}}"
+    type="button"
+    value="Add"
+    name="todo"
+    class="addmovie__button"
+  />
+</div>
