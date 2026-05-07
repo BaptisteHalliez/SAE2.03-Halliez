@@ -5,8 +5,9 @@
   gap: 2rem;
 
   .addmovie__title {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: var(--fs-28);
+    font-family: var(--ff-titles);
+    font-weight: var(--fw-semi-bold);
   }
 
   .addmovie__form {
@@ -16,8 +17,8 @@
 
     .addmovie__input {
       height: 3rem;
-      font-family: var(--ff-sans);
-      font-size: 1.25rem;
+      font-family: var(--ff-body);
+      font-size: var(--fs-16);
 
       .addmovie__opt {
       }
@@ -30,13 +31,14 @@
   }
 
   .addmovie__button {
-    font-weight: 600;
     height: 3rem;
-    font-size: 1.5rem;
+    font-size: var(--fs-18);
+    font-weight: var(--fw-semi-bold);
+    color: var(--fg-btn);
   }
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 40rem) {
   .addmovie {
     .addmovie__form {
       display: grid;

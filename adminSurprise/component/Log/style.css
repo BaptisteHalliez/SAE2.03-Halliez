@@ -5,14 +5,14 @@
   height: 8rem;
   padding: 1rem 1rem 1rem 1.5rem;
 
-  background-color: var(--color-bg);
+  background-color: var(--bg-accent);
   border-style: solid;
-  border-color: var(--color-fg);
+  border-color: var(--fg-accent);
   border-width: 1px;
   overflow: hidden;
   .log__list {
     font-size: smaller;
-    color: var(--color-accent);
+    color: var(--fg-accent);
     overflow-y: scroll;
     .last {
       animation: fondu-en-entree 1s ease-in-out;

@@ -5,8 +5,9 @@
   gap: 2rem;
 
   .addprofile__title {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: var(--fs-28);
+    font-family: var(--ff-titles);
+    font-weight: var(--fw-semi-bold);
   }
 
   .addprofile__form {
@@ -18,20 +19,21 @@
   .addprofile__input {
     height: 3rem;
     font-family: var(--ff-sans);
-    font-size: 1.25rem;
+    font-size: var(--fs-16);
 
     .addprofile__opt {
     }
   }
 
   .addprofile__button {
-    font-weight: 600;
     height: 3rem;
-    font-size: 1.5rem;
+    font-size: var(--fs-18);
+    font-weight: var(--fw-semi-bold);
+    color: var(--fg-btn);
   }
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 40rem) {
   .addprofile {
     .addprofile__form {
       display: grid;

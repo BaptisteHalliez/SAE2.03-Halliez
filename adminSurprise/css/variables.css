@@ -1,20 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap');
 
 :root {
-  /* Primitive Tokens */
-  --color-black: hsl(253, 69%, 8%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-gray-light: hsl(0, 0%, 80%);
-  --color-gray: hsl(0, 0%, 50%);
-  --color-gray-dark: hsl(0, 0%, 20%);
-  --color-green: hsl(120, 100%, 37%);
-
-  --ff-sans: "DM sans", sans-serif;
-
+  --clr-white: hsl(240, 100%, 99%);
+  --clr-dark: hsl(243, 40%, 11%);
+  --clr-dark-blue: hsl(246, 100%, 6%);
+  --clr-blue: hsl(232, 100%, 55%);
+  
+  --ff-titles: "Sora", sans-serif;
+  --ff-body: "Inter", sans-serif;
+  
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.25rem;
+  --fs-28: 1.75rem;
+  
+  --fw-semi-bold: 600;
+  
+  --ls-menus: 0.24px;
+  --ls-titles: 0.36px;
+  
   /* Sementic Tokens */
-  --color-fg: var(--color-white);
-  --color-bg: var(--color-gray-dark);
-  --color-accent: var(--color-green);
-  --bg-body: var(--color-gray-light);
-  --fg-body: var(--color-gray-dark);
+  --bg-body: var(--clr-dark-blue);
+  --bg-btn: var(--clr-white);
+  --bg-accent: var(--clr-dark);
+  
+  --fg-body: var(--clr-white);
+  --fg-btn: var(--clr-blue);
+  --fg-accent: var(--clr-white);
+
 }
