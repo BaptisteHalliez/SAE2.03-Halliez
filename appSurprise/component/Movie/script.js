@@ -19,6 +19,12 @@ Movie.format = function (movies, favorites = []) {
       let li = templateLi;
       li = li.replaceAll("{{movieId}}", film.id);
       li = li.replaceAll("{{sourceAffiche}}", film.image);
+      li = li.replaceAll("{{movieTrailer}}", film.trailer);
+      li = li.replaceAll("{{movieCategory}}", film.category_name);
+      li = li.replaceAll("{{movieYear}}", film.year);
+      li = li.replaceAll("{{movieLength}}", film.length);
+      li = li.replaceAll("{{movieRestriction}}", film.min_age);
+      li = li.replaceAll("{{movieLength}}", film.length);
       li = li.replaceAll("{{movieTitle}}", film.name);
 
       let Favorited = false;
@@ -28,13 +34,17 @@ Movie.format = function (movies, favorites = []) {
         }
       }
       let favBtn = "";
+      let favClass = "";
       if (Favorited) {
         favBtn = "";
+        favClass = "is-added";
       }
       else {
         favBtn = "C.handlerAddFavorite(" + film.id + ")";
+        let favClass = "";
       }
       li = li.replaceAll("{{favBtn}}", favBtn);
+      li = li.replaceAll("{{favClass}}", favClass);
       filmHTML += li;
     }
     html = html.replaceAll("{{movieList}}", filmHTML);

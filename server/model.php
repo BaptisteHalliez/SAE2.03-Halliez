@@ -23,7 +23,7 @@ function getAllMovies($m = 0){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "SELECT Movie.id, Movie.name, Movie.image, Category.name AS category_name FROM Movie INNER JOIN Category ON Category.id = Movie.id_category WHERE Movie.min_age<=:min_age ORDER BY Category.name";
+    $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.trailer, Movie.min_age,  Movie.image, Category.name AS category_name FROM Movie INNER JOIN Category ON Category.id = Movie.id_category WHERE Movie.min_age<=:min_age ORDER BY Category.name";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Lie le paramètre à la valeur
@@ -37,7 +37,7 @@ function getAllMovies($m = 0){
 
 function getAllFavorites($p){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.* FROM Movie INNER JOIN Favorite ON Movie.id = Favorite.id_movie WHERE Favorite.id_profile = :profile";
+    $sql = "SELECT Movie.*, Category.name AS category_name FROM Movie INNER JOIN Favorite ON Movie.id = Favorite.id_movie INNER JOIN Category ON Movie.id_category = Category.id WHERE Favorite.id_profile = :profile";
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':profile', $p);
     $stmt->execute();

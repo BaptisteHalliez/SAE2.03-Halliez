@@ -22,12 +22,16 @@ MovieDetails.format = function (data, favorites = []) {
     }
   }
   let favBtn = "";
+  let favClass = "";
   if (Favorited) {
     favBtn = "C.handlerRemoveFavorite(" + data.id + ")";
+    favClass = "is-added";
   } else {
     favBtn = "C.handlerAddFavorite(" + data.id + ")";
+    favClass = "";
   }
   html = html.replaceAll("{{favBtn}}", favBtn);
+  html = html.replaceAll("{{favClass}}", favClass);
   return html;
 };
 

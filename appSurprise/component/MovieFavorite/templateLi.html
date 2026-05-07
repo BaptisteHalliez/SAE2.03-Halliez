@@ -8,25 +8,66 @@
       />
     </div>
     <figcaption class="card__infos">
-      <p class="card__title">{{movieTitle}}</p>
-      <span onclick="C.handlerRemoveFavorite('{{movieId}}')" class="card__removeFavorite">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M19 14C20.49 12.54 22 10.79 22 8.5C22 7.04131 21.4205 5.64236 20.3891 4.61091C19.3576 3.57946 17.9587 3 16.5 3C14.74 3 13.5 3.5 12 5C10.5 3.5 9.26 3 7.5 3C6.04131 3 4.64236 3.57946 3.61091 4.61091C2.57946 5.64236 2 7.04131 2 8.5C2 10.8 3.5 12.55 5 14L12 21L19 14Z"
-            fill="#FF0000"
-            stroke="#1B1A1A"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </span>
+      <iframe
+      src="{{movieTrailer}}&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&cc_load_policy=0"
+      frameborder="0"
+      class="detail__trailer"
+      allow="
+        accelerometer;
+        autoplay;
+        clipboard-write;
+        encrypted-media;
+        gyroscope;
+        picture-in-picture;
+        web-share;
+      "
+      allowfullscreen
+    ></iframe>
+    <div class="movie__infos">
+      <div class="movie__small">
+          <div class="small__infos">
+            <p class="small__info">{{movieCategory}}</p>
+            •
+            <p class="small__info">{{movieYear}}</p>
+            •
+            <p class="small__info">{{movieLength}} minutes</p>
+            •
+            <p class="small__info">-{{movieRestriction}} ans</p>
+          </div>
+        <p class="movie__title">{{movieTitle}}</p>
+    </div>
+    <div class="movie__btns">
+      <a href="#" class="movie__watch">
+          <svg class="icone">
+            <use xlink:href="#playBtn"></use>
+          </svg>
+          Regarder
+        </a>
+        <div class="myfavorite">
+          <span onclick="C.handlerRemoveFavorite('{{movieId}}')" class="myfavorite__removeFavorite">
+            <svg class="icone icone__added">
+              <use xlink:href="#added"></use>
+            </svg>
+          </span>
+        </div>
+    </div>
     </figcaption>
   </figure>
 </li>
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  style="position: absolute; width: 0; height: 0; overflow: hidden"
+>
+  <symbol id="added" viewBox="0 0 24 24">
+    <path
+      d="M5 13L9 17L19 7"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </symbol>
+</svg>

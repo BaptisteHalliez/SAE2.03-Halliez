@@ -3,12 +3,14 @@
 
 :root {
   --clr-white: hsl(240, 100%, 99%);
+  --clr-faded-white: hsla(0, 0%, 100%, 0.3);
   --clr-black: hsla(246, 100%, 6%, 0.75);
   --clr-faded-black: hsla(240, 50%, 4%, 0.9);
   --clr-faded-gray: hsla(240, 50%, 4%, 0.2);
   --clr-dark: hsl(243, 40%, 11%);
   --clr-dark-blue: hsl(246, 100%, 6%);
-  --clr-grayish-blue: hsl(245, 26%, 17%);
+  --clr-faded-blue: hsl(245, 26%, 17%);
+  --clr-grayish-blue: hsl(245, 41%, 11%);
   --clr-blue: hsl(232, 100%, 55%);
   --clr-gray: hsl(246, 17%, 23%);
   --clr-light-gray: hsl(248, 6%, 73%);
@@ -37,8 +39,9 @@
   --bg-small-infos: var(--clr-dark);
   --bg-movie-btns: var(--clr-dark);
   --bg-overlay-trailer: var(--clr-faded-black) 5%, var(--clr-faded-gray) 60%;
+  --bg-hover-movies: var(--clr-faded-blue);
 
-  --bg-hover-movie-btns: var(--clr-faded-black);
+  --bg-hover-movie-btns: var(--clr-gray);
   --bg-hover-arrows-on-arrows: var(--clr-dark-blue);
   --bg-hover-arrows-off-arrows: var(--clr-black);
 
@@ -49,4 +52,5 @@
 
   --border-movie-btns: var(--clr-light-gray);
 
+  --scrollbar-color: var(--clr-faded-white);
 }

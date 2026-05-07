@@ -8,24 +8,86 @@
       />
     </div>
     <figcaption class="card__infos">
-      <p class="card__title">{{movieTitle}}</p>
-      <span onclick="{{favBtn}}" class="card__addFavorite">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M19 14C20.49 12.54 22 10.79 22 8.5C22 7.04131 21.4205 5.64236 20.3891 4.61091C19.3576 3.57946 17.9587 3 16.5 3C14.74 3 13.5 3.5 12 5C10.5 3.5 9.26 3 7.5 3C6.04131 3 4.64236 3.57946 3.61091 4.61091C2.57946 5.64236 2 7.04131 2 8.5C2 10.8 3.5 12.55 5 14L12 21L19 14Z"
-            stroke="#1B1A1A"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </span>
+      <iframe
+      src="{{movieTrailer}}&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&cc_load_policy=0"
+      frameborder="0"
+      class="detail__trailer"
+      allow="
+        accelerometer;
+        autoplay;
+        clipboard-write;
+        encrypted-media;
+        gyroscope;
+        picture-in-picture;
+        web-share;
+      "
+      allowfullscreen
+    ></iframe>
+    <div class="movie__infos">
+      <div class="movie__small">
+          <div class="small__infos">
+            <p class="small__info">{{movieCategory}}</p>
+            •
+            <p class="small__info">{{movieYear}}</p>
+            •
+            <p class="small__info">{{movieLength}} minutes</p>
+            •
+            <p class="small__info">-{{movieRestriction}} ans</p>
+          </div>
+        <p class="movie__title">{{movieTitle}}</p>
+    </div>
+      <div class="movie__btns">
+        <a href="#" class="movie__watch">
+          <svg class="icone">
+            <use xlink:href="#playBtn"></use>
+          </svg>
+          Regarder
+        </a>
+        <div class="myfavorite">
+          <span onclick="{{favBtn}}" class="myfavorite__btn {{favClass}}">
+            <svg class="icone icone__add">
+              <use xlink:href="#add"></use>
+            </svg>
+            <svg class="icone icone__added">
+              <use xlink:href="#added"></use>
+            </svg>
+          </span>
+        </div>
+      </div>
     </figcaption>
   </figure>
 </li>
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  style="position: absolute; width: 0; height: 0; overflow: hidden"
+>
+  <symbol id="playBtn" viewBox="0 0 13 14">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M1.74 1.12868e-06C1.44439 -0.000291344 1.15358 0.0747349 0.895 0.218001C0.629827 0.353163 0.406435 0.557939 0.248769 0.810381C0.0911027 1.06282 0.00510723 1.35341 0 1.651V12.328C0.00510723 12.6256 0.0911027 12.9162 0.248769 13.1686C0.406435 13.4211 0.629827 13.6258 0.895 13.761C1.15826 13.9072 1.45497 13.9826 1.75611 13.9798C2.05725 13.977 2.35251 13.8961 2.613 13.745L11.243 8.407C11.5093 8.27279 11.7331 8.06724 11.8895 7.81328C12.0458 7.55932 12.1285 7.26692 12.1284 6.96869C12.1283 6.67046 12.0454 6.37813 11.8889 6.12427C11.7324 5.87042 11.5084 5.66503 11.242 5.531L2.612 0.233001L2.596 0.224001C2.33474 0.0768211 2.03987 -0.000340377 1.74 1.12868e-06Z"
+      fill="#1937FF"
+    />
+  </symbol>
+  <symbol id="add" viewBox="0 0 24 24">
+    <path
+      d="M12 4V20M20 12L4 12"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </symbol>
+  <symbol id="added" viewBox="0 0 24 24">
+    <path
+      d="M5 13L9 17L19 7"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </symbol>
+</svg>

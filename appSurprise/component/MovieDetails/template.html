@@ -39,9 +39,12 @@
       </div>
       <div class="movie__btns">
         <div class="myfavorite">
-          <span onclick="{{favBtn}}" class="myfavorite__btn">
-            <svg class="icone">
+          <span onclick="{{favBtn}}" class="myfavorite__btn {{favClass}}">
+            <svg class="icone icone__add">
               <use xlink:href="#add"></use>
+            </svg>
+            <svg class="icone icone__added">
+              <use xlink:href="#added"></use>
             </svg>
           </span>
           <p class="myfavorite__name">Ma liste</p>
@@ -110,6 +113,16 @@
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+    />
+  </symbol>
+  <symbol id="added" viewBox="0 0 24 24">
+    <path
+      d="M5 13L9 17L19 7"
+      stroke="#FAFAFF"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
     />
   </symbol>
 </svg>
